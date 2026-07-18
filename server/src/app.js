@@ -29,10 +29,13 @@ app.use(
   })
 );
 
-const ALLOWED_ORIGINS = env.clientUrl
-  .split(',')
-  .map((o) => o.trim())
-  .filter(Boolean);
+const ALLOWED_ORIGINS = [
+  'https://customer-query.vercel.app',
+  ...env.clientUrl
+    .split(',')
+    .map((o) => o.trim())
+    .filter(Boolean)
+];
 
 app.use(
   cors({
@@ -44,11 +47,12 @@ app.use(
       if (ALLOWED_ORIGINS.includes(origin)) {
         return callback(null, true);
       }
-      callback(new Error(`CORS: origin '${origin}' not allowed`));
+      console.warn(`CORS Blocked: '${origin}' not allowed`);
+      return callback(null, false);
     },
     credentials: true,                // required for cookies to be sent cross-origin
     methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],
     exposedHeaders: ['Set-Cookie'],
   })
 );
