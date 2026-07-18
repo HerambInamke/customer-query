@@ -26,4 +26,3 @@ export const sendError = (res, { message = 'Something went wrong', errors = [], 
 
   return res.status(statusCode).json(payload);
 };
-

@@ -12,11 +12,11 @@ export const verifyToken = (token) => {
 };
 
 const buildCookieOptions = (overrides = {}) => ({
-  httpOnly: true,                                         // JS can never read this cookie
-  secure: env.isProduction,                               // HTTPS only in production
-  sameSite: env.isProduction ? 'none' : 'lax',           // 'none' needed for cross-origin in prod, 'lax' fine in dev
+  httpOnly: true,
+  secure: env.isProduction,
+  sameSite: env.isProduction ? 'none' : 'lax',
   expires: new Date(Date.now() + env.jwtCookieExpiresIn * 24 * 60 * 60 * 1000),
-  path: '/',                                              // available on all routes
+  path: '/',
   ...overrides,
 });
 
@@ -25,8 +25,5 @@ export const createTokenCookie = (res, token) => {
 };
 
 export const clearTokenCookie = (res) => {
-  res.cookie('token', '', buildCookieOptions({
-    expires: new Date(0),                                 // expire immediately
-    maxAge: 0,
-  }));
+  res.cookie('token', '', buildCookieOptions({ expires: new Date(0), maxAge: 0 }));
 };
