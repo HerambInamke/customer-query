@@ -20,8 +20,7 @@ export const Dashboard = () => {
     try {
       if (showLoading) setLoading(true);
       setError(null);
-      
-      // Fetch statistics and recent queries in parallel
+
       const [statsRes, queriesRes] = await Promise.all([
         queryService.getStats(),
         queryService.getAllQueries({ limit: 5, sort: 'newest' }),

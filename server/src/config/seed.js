@@ -18,8 +18,6 @@ if (!MONGO_URI) {
   process.exit(1);
 }
 
-// ─── Seed Data ────────────────────────────────────────────────────────────────
-
 const usersData = [
   {
     name: 'Admin User',
@@ -66,7 +64,7 @@ const usersData = [
 ];
 
 const queryTemplates = [
-  // Technical
+  
   {
     customerName: 'Michael Thompson',
     customerEmail: 'michael.t@company.com',
@@ -128,7 +126,6 @@ const queryTemplates = [
     tags: ['2fa', 'sms', 'authentication'],
   },
 
-  // Billing
   {
     customerName: 'Amanda Foster',
     customerEmail: 'amanda.f@retail.com',
@@ -178,7 +175,6 @@ const queryTemplates = [
     tags: ['payment', 'card', 'billing-settings'],
   },
 
-  // Sales
   {
     customerName: 'Jennifer Adams',
     customerEmail: 'j.adams@prospect.com',
@@ -216,7 +212,6 @@ const queryTemplates = [
     tags: ['partnership', 'reseller', 'msp'],
   },
 
-  // Complaint
   {
     customerName: 'George Harrison',
     customerEmail: 'g.harrison@customer.com',
@@ -254,7 +249,6 @@ const queryTemplates = [
     tags: ['feature-removal', 'csv-import', 'workflow'],
   },
 
-  // General
   {
     customerName: 'Helen Turner',
     customerEmail: 'h.turner@general.com',
@@ -292,7 +286,6 @@ const queryTemplates = [
     tags: ['roadmap', 'integrations', 'salesforce', 'slack'],
   },
 
-  // More mixed
   {
     customerName: 'Brian Moore',
     customerEmail: 'b.moore@tech.com',
@@ -355,8 +348,6 @@ const queryTemplates = [
   },
 ];
 
-// ─── Seeder ───────────────────────────────────────────────────────────────────
-
 const seed = async () => {
   try {
     await mongoose.connect(MONGO_URI, {
@@ -364,21 +355,18 @@ const seed = async () => {
     });
     console.info('MongoDB connected for seeding...');
 
-    // Clear existing data
     await Promise.all([
       User.deleteMany({}),
       CustomerQuery.deleteMany({}),
     ]);
     console.info('Cleared existing data.');
 
-    // Create users (passwords hashed by the User model pre-save hook)
     const createdUsers = await User.create(usersData);
     console.info(`Created ${createdUsers.length} users.`);
 
     const supportUsers = createdUsers.filter((u) => u.role === 'Support');
     const regularUsers = createdUsers.filter((u) => u.role === 'User');
 
-    // Distribute queries across creators and assignees
     const queries = queryTemplates.map((template, index) => {
       const creator    = index % 2 === 0 ? regularUsers[0] : regularUsers[1];
       const assignedTo = template.status !== 'Open'
@@ -395,7 +383,6 @@ const seed = async () => {
     const createdQueries = await CustomerQuery.create(queries);
     console.info(`Created ${createdQueries.length} customer queries.`);
 
-    // Summary
     console.info('\n──────────────────────────────────────');
     console.info('          SEED COMPLETED');
     console.info('──────────────────────────────────────');

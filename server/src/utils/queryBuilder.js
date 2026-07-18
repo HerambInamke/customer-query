@@ -1,7 +1,9 @@
 import { SORT_OPTIONS } from '../constants/index.js';
 
 const buildSearchFilter = (search) => {
-  if (!search) return {};
+  if (!search) {
+    return {};
+  }
 
   const escaped = search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const regex = new RegExp(escaped, 'i');
@@ -18,11 +20,18 @@ const buildSearchFilter = (search) => {
 };
 
 const buildDateRangeFilter = (startDate, endDate) => {
-  if (!startDate && !endDate) return {};
+  if (!startDate && !endDate) {
+    return {};
+  }
 
   const createdAt = {};
-  if (startDate) createdAt.$gte = new Date(startDate);
-  if (endDate) createdAt.$lte = new Date(endDate);
+
+  if (startDate) {
+    createdAt.$gte = new Date(startDate);
+  }
+  if (endDate) {
+    createdAt.$lte = new Date(endDate);
+  }
 
   return { createdAt };
 };
@@ -44,10 +53,18 @@ export const buildQueryFilter = (queryParams) => {
 
   const filter = {};
 
-  if (status) filter.status = status;
-  if (priority) filter.priority = priority;
-  if (category) filter.category = category;
-  if (assignedTo) filter.assignedTo = assignedTo;
+  if (status) {
+    filter.status = status;
+  }
+  if (priority) {
+    filter.priority = priority;
+  }
+  if (category) {
+    filter.category = category;
+  }
+  if (assignedTo) {
+    filter.assignedTo = assignedTo;
+  }
 
   return {
     ...filter,

@@ -1,10 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* Fonts */
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   
-  /* Minimalist SaaS Color Palette */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
   --bg-app: #F5F7FA;
   --bg-surface: #FFFFFF;
   --bg-surface-hover: #FAFBFC;
@@ -25,8 +24,7 @@
   --text-secondary: #4B5563;
   --text-muted: #6B7280;
   --text-inverse: #FFFFFF;
-  
-  /* Status Colors */
+
   --success: #16A34A;
   --success-light: #DCFCE7;
   --warning: #D97706;
@@ -35,38 +33,31 @@
   --danger-light: #FEE2E2;
   --info: #2563EB;
   --info-light: #DBEAFE;
-  
-  /* Spacing Tokens */
+
   --space-xs: 4px;
   --space-sm: 8px;
   --space-md: 16px;
   --space-lg: 24px;
   --space-xl: 40px;
   --space-2xl: 32px;
-  
-  /* Border Radius */
+
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 12px;
   --radius-full: 9999px;
-  
-  /* Shadows */
+
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
   --shadow-md: 0 1px 2px rgba(0, 0, 0, 0.04);
   --shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.06);
   --shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.02);
 
-  /* Focus Ring */
   --focus-ring: 0 0 0 3px rgba(37, 99, 235, 0.2);
 
-  /* Transitions */
   --transition-fast: 150ms ease;
   --transition-normal: 150ms ease;
   --transition-slow: 150ms ease;
 }
 
-
-/* Base Styles */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -94,7 +85,6 @@ a:hover {
   color: var(--primary-hover);
 }
 
-/* Scrollbars */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -113,7 +103,6 @@ a:hover {
   background: var(--border-hover);
 }
 
-/* Layout Utilities & Containers */
 .page-container {
   padding: var(--space-2xl);
   max-width: 1400px;
@@ -150,7 +139,6 @@ a:hover {
   margin-bottom: var(--space-md);
 }
 
-/* Typography Helpers */
 .text-secondary {
   color: var(--text-secondary);
 }
@@ -159,7 +147,6 @@ a:hover {
   color: var(--text-muted);
 }
 
-/* Dashboard Cards Layout & Grid */
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -179,7 +166,6 @@ a:hover {
   }
 }
 
-/* Cards */
 .card {
   background-color: var(--bg-surface);
   border: 1px solid var(--border);
@@ -213,7 +199,6 @@ a:hover {
   background-color: var(--bg-app);
 }
 
-/* Dashboard Stat Card Specifically */
 .dashboard-card {
   display: flex;
   flex-direction: column;
@@ -237,7 +222,6 @@ a:hover {
   line-height: 1.1;
 }
 
-/* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -315,7 +299,6 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Forms & Inputs */
 .form-group {
   margin-bottom: var(--space-md);
   display: flex;
@@ -374,7 +357,6 @@ a:hover {
   margin-top: var(--space-lg);
 }
 
-/* Tables */
 .table-container {
   width: 100%;
   overflow-x: auto;
@@ -425,7 +407,6 @@ a:hover {
   gap: var(--space-sm);
 }
 
-/* Badges */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -437,7 +418,6 @@ a:hover {
   line-height: 1.2;
 }
 
-/* Status Mappings */
 .status-open {
   background-color: var(--primary-light);
   color: var(--primary);
@@ -472,7 +452,6 @@ a:hover {
   font-weight: 600;
 }
 
-/* Priority Mappings */
 .priority-low {
   background-color: var(--success-light);
   color: #15803D;
@@ -497,7 +476,6 @@ a:hover {
   font-weight: 600;
 }
 
-/* Modals */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -524,7 +502,6 @@ a:hover {
   animation: slideUp var(--transition-normal);
 }
 
-/* Animations */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -535,7 +512,6 @@ a:hover {
   to { transform: translateY(0); opacity: 1; }
 }
 
-/* Loaders & Spinners */
 .loader-container {
   display: flex;
   align-items: center;
@@ -564,7 +540,6 @@ a:hover {
   100% { transform: rotate(360deg); }
 }
 
-/* Toast styling overrides (just-in-case wrapper) */
 .toast-custom {
   background-color: var(--bg-surface) !important;
   color: var(--text) !important;
@@ -573,7 +548,6 @@ a:hover {
   font-family: var(--font-sans) !important;
 }
 
-/* Empty State */
 .empty-state {
   display: flex;
   flex-direction: column;
@@ -606,7 +580,6 @@ a:hover {
   margin-bottom: var(--space-lg);
 }
 
-/* Authentication Page Styles */
 .auth-wrapper {
   min-height: 100vh;
   display: flex;
@@ -649,7 +622,6 @@ a:hover {
   color: var(--text-secondary);
 }
 
-/* Main Layout Architecture */
 .app-layout {
   display: flex;
   min-height: 100vh;
@@ -657,7 +629,6 @@ a:hover {
   overflow: hidden;
 }
 
-/* Sidebar Styling */
 .app-sidebar {
   width: 260px;
   background-color: var(--bg-surface);
@@ -757,7 +728,6 @@ a:hover {
   color: var(--text-secondary);
 }
 
-/* Main Content Area */
 .app-content {
   flex: 1;
   display: flex;
@@ -765,7 +735,6 @@ a:hover {
   min-width: 0;
 }
 
-/* Header/Navbar Styling */
 .app-navbar {
   height: 4.5rem;
   background-color: var(--bg-surface);
@@ -821,7 +790,6 @@ a:hover {
   font-size: 0.875rem;
 }
 
-/* Sidebar Overlay for Mobile View */
 .sidebar-overlay {
   position: fixed;
   top: 0;
@@ -839,7 +807,6 @@ a:hover {
   }
 }
 
-/* Keyboard Accessibility - Focus States */
 .btn:focus-visible,
 a:focus-visible,
 input[type="checkbox"]:focus-visible,

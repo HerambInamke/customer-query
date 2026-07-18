@@ -11,7 +11,7 @@ export const authController = {
 
     return sendCreated(res, {
       message: 'Account created successfully',
-      data: { user },          // token stays in HttpOnly cookie only
+      data: { user, token },
     });
   }),
 
@@ -23,7 +23,7 @@ export const authController = {
 
     return sendSuccess(res, {
       message: 'Login successful',
-      data: { user },           // token stays in HttpOnly cookie only
+      data: { user, token },
     });
   }),
 

@@ -22,11 +22,10 @@ export const ProtectedRoute = () => {
   }
 
   if (!user) {
-    // Redirect to login if user is not authenticated
+    
     return <Navigate to="/login" replace />;
   }
 
-  // Render children routes if authenticated
   return <Outlet />;
 };
 

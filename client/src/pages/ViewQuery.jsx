@@ -47,7 +47,6 @@ export const ViewQuery = () => {
         setQuery(queryRes.data.query);
       }
 
-      // If user is staff, fetch support agents for assignment options
       const isStaff = user?.role === USER_ROLES.ADMIN || user?.role === USER_ROLES.SUPPORT;
       if (isStaff) {
         const agentsRes = await userService.getSupportAgents();
@@ -164,7 +163,7 @@ export const ViewQuery = () => {
 
   return (
     <div className="page-container">
-      {/* Header */}
+      {}
       <header className="page-header">
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-md)' }}>
           <Link to="/queries" className="btn-link" style={{ display: 'flex', alignItems: 'center' }}>
@@ -213,9 +212,9 @@ export const ViewQuery = () => {
           }
         `}} />
 
-        {/* Left Column: Description & Metadata */}
+        {}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-lg)' }}>
-          {/* Query Description Card */}
+          {}
           <Card title="Query Description">
             <div style={{ whiteSpace: 'pre-wrap', color: 'var(--text)', fontSize: '0.95rem', lineHeight: '1.6' }}>
               {query.description}
@@ -241,7 +240,7 @@ export const ViewQuery = () => {
             )}
           </Card>
 
-          {/* Activity/Timeline logs Card */}
+          {}
           <Card title="Timeline Log" headerActions={<MdHistory style={{ fontSize: '1.25rem', color: 'var(--text-muted)' }} />}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-lg)', position: 'relative', paddingLeft: '1.5rem' }}>
               <div 
@@ -255,7 +254,7 @@ export const ViewQuery = () => {
                 }} 
               />
 
-              {/* Event 1: Creation */}
+              {}
               <div style={{ position: 'relative' }}>
                 <div 
                   style={{ 
@@ -277,7 +276,7 @@ export const ViewQuery = () => {
                 </div>
               </div>
 
-              {/* Event 2: Assignment */}
+              {}
               <div style={{ position: 'relative' }}>
                 <div 
                   style={{ 
@@ -324,9 +323,9 @@ export const ViewQuery = () => {
           </Card>
         </div>
 
-        {/* Right Column: Customer Info & Inline Actions */}
+        {}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-lg)' }}>
-          {/* Customer Profile Card */}
+          {}
           <Card title="Customer Profile">
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-sm)' }}>
@@ -361,12 +360,12 @@ export const ViewQuery = () => {
             </div>
           </Card>
 
-          {/* Quick Modifier Actions Card (visible if Staff) */}
+          {}
           {isStaff && (
             <Card title="Ticket Resolution Actions">
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
                 
-                {/* Inline Status Modifier */}
+                {}
                 <div className="form-group" style={{ marginBottom: 0 }}>
                   <label className="form-label" htmlFor="inline-status-select">Status</label>
                   <div style={{ position: 'relative' }}>

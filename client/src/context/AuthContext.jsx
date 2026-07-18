@@ -6,7 +6,6 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Initialize and check current user status
   const checkAuthStatus = useCallback(async (showLoading = false) => {
     try {
       if (showLoading) setLoading(true);
@@ -15,9 +14,11 @@ export const AuthProvider = ({ children }) => {
         setUser(response.data.user);
       } else {
         setUser(null);
+        localStorage.removeItem('token');
       }
     } catch {
       setUser(null);
+      localStorage.removeItem('token');
     } finally {
       setLoading(false);
     }
@@ -35,12 +36,16 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await authService.login({ email, password });
       if (response?.success && response?.data?.user) {
+        if (response?.data?.token) {
+          localStorage.setItem('token', response.data.token);
+        }
         setUser(response.data.user);
         return response.data.user;
       }
       throw new Error('Login failed. Please check credentials.');
     } catch (error) {
       setUser(null);
+      localStorage.removeItem('token');
       throw error;
     } finally {
       setLoading(false);
@@ -52,12 +57,16 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await authService.register({ name, email, password, role });
       if (response?.success && response?.data?.user) {
+        if (response?.data?.token) {
+          localStorage.setItem('token', response.data.token);
+        }
         setUser(response.data.user);
         return response.data.user;
       }
       throw new Error('Registration failed.');
     } catch (error) {
       setUser(null);
+      localStorage.removeItem('token');
       throw error;
     } finally {
       setLoading(false);
@@ -71,6 +80,7 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       console.error('Logout error:', error);
     } finally {
+      localStorage.removeItem('token');
       setUser(null);
       setLoading(false);
     }

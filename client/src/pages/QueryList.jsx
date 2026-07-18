@@ -29,26 +29,22 @@ export const QueryList = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Search & Filter state
   const [search, setSearch] = useState('');
   const [status, setStatus] = useState('');
   const [priority, setPriority] = useState('');
   const [category, setCategory] = useState('');
   const [sort, setSort] = useState('newest');
-  
-  // Pagination state
+
   const [page, setPage] = useState(1);
   const [limit] = useState(10);
   const [totalPages, setTotalPages] = useState(1);
   const [totalDocs, setTotalDocs] = useState(0);
 
-  // Selection states
   const [selectedIds, setSelectedIds] = useState([]);
   const [deletingId, setDeletingId] = useState(null);
   const [bulkDeleting, setBulkDeleting] = useState(false);
   const [isBulkConfirmOpen, setIsBulkConfirmOpen] = useState(false);
 
-  // Fetch queries
   const fetchQueries = useCallback(async (showLoading = false) => {
     try {
       if (showLoading) setLoading(true);
@@ -72,7 +68,7 @@ export const QueryList = () => {
         if (response.meta) {
           setTotalPages(response.meta.totalPages || 1);
           setTotalDocs(response.meta.totalDocs || 0);
-          // If current page is out of range, drop back
+          
           if (response.meta.page > response.meta.totalPages && response.meta.totalPages > 0) {
             setPage(response.meta.totalPages);
           }
@@ -93,14 +89,12 @@ export const QueryList = () => {
     return () => clearTimeout(timer);
   }, [fetchQueries]);
 
-  // Reset page when filters change
   const handleFilterChange = (filterSetter, value) => {
     filterSetter(value);
     setPage(1);
     setSelectedIds([]);
   };
 
-  // Delete Query Single
   const handleDeleteSingle = async () => {
     if (!deletingId) return;
     try {
@@ -116,7 +110,6 @@ export const QueryList = () => {
     }
   };
 
-  // Bulk Delete
   const handleBulkDelete = async () => {
     if (selectedIds.length === 0) return;
     setBulkDeleting(true);
@@ -135,7 +128,6 @@ export const QueryList = () => {
     }
   };
 
-  // Checkbox handlers
   const handleSelectAll = (e) => {
     if (e.target.checked) {
       setSelectedIds(queries.map((q) => q._id));

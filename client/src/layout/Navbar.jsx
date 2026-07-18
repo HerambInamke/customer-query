@@ -4,7 +4,6 @@ import useAuth from '../hooks/useAuth.js';
 export const Navbar = ({ onToggleSidebar }) => {
   const { user } = useAuth();
 
-  // Get user's initials for the avatar
   const getInitials = (name) => {
     if (!name) return 'U';
     return name

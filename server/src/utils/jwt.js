@@ -11,17 +11,18 @@ export const verifyToken = (token) => {
   return jwt.verify(token, env.jwtSecret);
 };
 
-const buildCookieOptions = (overrides = {}) => {
-  const isSecure = env.isProduction || env.clientUrl.startsWith('https://');
-  return {
-    httpOnly: true,
-    secure: isSecure,
-    sameSite: isSecure ? 'none' : 'lax',
-    expires: new Date(Date.now() + env.jwtCookieExpiresIn * 24 * 60 * 60 * 1000),
-    path: '/',
-    ...overrides,
-  };
+const isSecureEnv = () => {
+  return env.isProduction || !!process.env.RENDER || !!process.env.RAILWAY_ENVIRONMENT;
 };
+
+const buildCookieOptions = (overrides = {}) => ({
+  httpOnly: true,
+  secure: isSecureEnv(),
+  sameSite: isSecureEnv() ? 'none' : 'lax',
+  expires: new Date(Date.now() + env.jwtCookieExpiresIn * 24 * 60 * 60 * 1000),
+  path: '/',
+  ...overrides,
+});
 
 export const createTokenCookie = (res, token) => {
   res.cookie('token', token, buildCookieOptions());

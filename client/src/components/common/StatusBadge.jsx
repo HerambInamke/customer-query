@@ -1,7 +1,6 @@
 export const StatusBadge = ({ status, className = '' }) => {
   if (!status) return null;
 
-  // Normalize status text for class selector matching
   const normalized = status.toLowerCase().replace(/\s+/g, '');
   let badgeClass = 'status-open';
 

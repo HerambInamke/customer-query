@@ -38,7 +38,6 @@ export const EditQuery = () => {
     },
   });
 
-  // Fetch current query details to prefill the form
   useEffect(() => {
     const fetchQueryDetails = async () => {
       try {
@@ -79,7 +78,7 @@ export const EditQuery = () => {
       const payload = {
         customerName: data.customerName,
         customerEmail: data.customerEmail,
-        customerPhone: data.customerPhone || null, // null out if empty
+        customerPhone: data.customerPhone || null, 
         subject: data.subject,
         description: data.description,
         priority: data.priority,
@@ -145,7 +144,7 @@ export const EditQuery = () => {
         <Card title="Update Query Details">
           <form onSubmit={handleSubmit(onSubmit)} noValidate>
             
-            {/* Customer Name */}
+            {}
             <Input
               label="Customer Name"
               type="text"
@@ -160,7 +159,7 @@ export const EditQuery = () => {
             />
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-md)' }}>
-              {/* Customer Email */}
+              {}
               <Input
                 label="Customer Email"
                 type="email"
@@ -176,7 +175,7 @@ export const EditQuery = () => {
                 })}
               />
 
-              {/* Customer Phone */}
+              {}
               <Input
                 label="Customer Phone"
                 type="tel"
@@ -203,7 +202,7 @@ export const EditQuery = () => {
                 })}
               />
 
-              {/* Priority */}
+              {}
               <Select
                 label="Priority"
                 options={priorityOptions}
@@ -229,7 +228,7 @@ export const EditQuery = () => {
               })}
             />
 
-            {/* Description */}
+            {}
             <Textarea
               label="Description"
               placeholder="Describe the customer query detailed error description..."
@@ -242,7 +241,7 @@ export const EditQuery = () => {
               })}
             />
 
-            {/* Tags Input */}
+            {}
             <Input
               label="Tags (Comma separated)"
               type="text"

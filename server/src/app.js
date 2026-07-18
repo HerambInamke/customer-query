@@ -40,7 +40,7 @@ const ALLOWED_ORIGINS = [
 app.use(
   cors({
     origin: (origin, callback) => {
-      // allow requests with no origin (curl, Postman, server-to-server)
+      
       if (!origin) {
         return callback(null, true);
       }
@@ -50,7 +50,7 @@ app.use(
       console.warn(`CORS Blocked: '${origin}' not allowed`);
       return callback(null, false);
     },
-    credentials: true,                // required for cookies to be sent cross-origin
+    credentials: true,                
     methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],
     exposedHeaders: ['Set-Cookie'],

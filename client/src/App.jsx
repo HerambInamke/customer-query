@@ -6,7 +6,6 @@ import ProtectedRoute from './components/common/ProtectedRoute.jsx';
 import MainLayout from './layout/MainLayout.jsx';
 import Loader from './components/common/Loader.jsx';
 
-// Lazy Loaded Pages
 const Login = lazy(() => import('./pages/Login.jsx'));
 const Register = lazy(() => import('./pages/Register.jsx'));
 const Dashboard = lazy(() => import('./pages/Dashboard.jsx'));
@@ -36,11 +35,11 @@ function App() {
           }
         >
           <Routes>
-            {/* Public Authentication Routes */}
+            {}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
 
-            {/* Protected Application Routes */}
+            {}
             <Route element={<ProtectedRoute />}>
               <Route element={<MainLayout />}>
                 <Route path="/dashboard" element={<Dashboard />} />
@@ -49,12 +48,12 @@ function App() {
                 <Route path="/queries/:id" element={<ViewQuery />} />
                 <Route path="/queries/:id/edit" element={<EditQuery />} />
                 
-                {/* Default Redirect to Dashboard */}
+                {}
                 <Route path="/" element={<Navigate to="/dashboard" replace />} />
               </Route>
             </Route>
 
-            {/* Catch-all Fallback */}
+            {}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

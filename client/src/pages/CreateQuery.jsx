@@ -35,7 +35,7 @@ export const CreateQuery = () => {
   const onSubmit = async (data) => {
     setSubmitting(true);
     try {
-      // Process tagsInput comma-delimited string into array of strings
+      
       const tags = data.tagsInput
         ? data.tagsInput.split(',').map((t) => t.trim()).filter(Boolean)
         : [];
@@ -82,7 +82,7 @@ export const CreateQuery = () => {
         <Card title="Query Information">
           <form onSubmit={handleSubmit(onSubmit)} noValidate>
             
-            {/* Customer Name */}
+            {}
             <Input
               label="Customer Name"
               type="text"
@@ -97,7 +97,7 @@ export const CreateQuery = () => {
             />
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-md)' }}>
-              {/* Customer Email */}
+              {}
               <Input
                 label="Customer Email"
                 type="email"
@@ -113,7 +113,7 @@ export const CreateQuery = () => {
                 })}
               />
 
-              {/* Customer Phone */}
+              {}
               <Input
                 label="Customer Phone"
                 type="tel"
@@ -140,7 +140,7 @@ export const CreateQuery = () => {
                 })}
               />
 
-              {/* Priority */}
+              {}
               <Select
                 label="Priority"
                 options={priorityOptions}
@@ -166,7 +166,7 @@ export const CreateQuery = () => {
               })}
             />
 
-            {/* Description */}
+            {}
             <Textarea
               label="Description"
               placeholder="Describe the customer query detailed error description..."
@@ -179,7 +179,7 @@ export const CreateQuery = () => {
               })}
             />
 
-            {/* Tags Input */}
+            {}
             <Input
               label="Tags (Comma separated)"
               type="text"

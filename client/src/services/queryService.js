@@ -6,7 +6,7 @@ export const queryService = {
   },
 
   async getAllQueries(params = {}) {
-    // Standardize passing params to Axios
+    
     return api.get('/queries', { params });
   },
 

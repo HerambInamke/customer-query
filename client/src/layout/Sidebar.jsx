@@ -21,7 +21,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
 
   return (
     <>
-      {/* Sidebar Mobile Backdrop */}
+      {}
       {isOpen && <div className="sidebar-overlay" onClick={onClose} />}
 
       <aside className={`app-sidebar ${isOpen ? 'active' : ''}`}>
