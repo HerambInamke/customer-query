@@ -11,14 +11,17 @@ export const verifyToken = (token) => {
   return jwt.verify(token, env.jwtSecret);
 };
 
-const buildCookieOptions = (overrides = {}) => ({
-  httpOnly: true,
-  secure: env.isProduction,
-  sameSite: env.isProduction ? 'none' : 'lax',
-  expires: new Date(Date.now() + env.jwtCookieExpiresIn * 24 * 60 * 60 * 1000),
-  path: '/',
-  ...overrides,
-});
+const buildCookieOptions = (overrides = {}) => {
+  const isSecure = env.isProduction || env.clientUrl.startsWith('https://');
+  return {
+    httpOnly: true,
+    secure: isSecure,
+    sameSite: isSecure ? 'none' : 'lax',
+    expires: new Date(Date.now() + env.jwtCookieExpiresIn * 24 * 60 * 60 * 1000),
+    path: '/',
+    ...overrides,
+  };
+};
 
 export const createTokenCookie = (res, token) => {
   res.cookie('token', token, buildCookieOptions());
