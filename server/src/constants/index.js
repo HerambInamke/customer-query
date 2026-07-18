@@ -41,4 +41,3 @@ export const PAGINATION_DEFAULTS = Object.freeze({
   LIMIT: 10,
   MAX_LIMIT: 100,
 });
-

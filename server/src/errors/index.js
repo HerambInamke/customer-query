@@ -42,4 +42,5 @@ export class BadRequestError extends AppError {
     this.name = 'BadRequestError';
   }
 }
+
 export { AppError };
